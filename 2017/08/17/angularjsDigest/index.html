@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/img/logo_miccall.png"/>
+	<link rel="shortcut icon" href="/img/logo_miccall.png">
+	
+			    <title>
+    Fairyting's blog
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="miccall" />
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+</head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">Ting</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/about/" title="简历">
+		                简历
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/gallery/" title="生活">
+		                生活
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/material/" title="学习资料">
+		                学习资料
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/learning/" title="Mark">
+		                Mark
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+		            
+		                <li><a href="https://github.com/atingting" class="icon fa-github"><span class="label">GitHub</span></a></li>
+		            
+		            
+		            
+		            
+		                <li><a href="mailto:zhangtingting.code@gmail.com" class="icon fa-envelope"><span class="label">Envelope</span></a></li>
+		            
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(/images/angularjs.png);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >AngularJs Digest简述</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h2 id="1-Digest-基本概念和原理"><a href="#1-Digest-基本概念和原理" class="headerlink" title="1. Digest 基本概念和原理"></a>1. Digest 基本概念和原理</h2><p>Digest过程是Angular实现双向数据绑定的基础。由于对scope对象的改动需要及时反映的到HTML元素的属性上，Angular要不时地检查每个scope变量的变化，这个检查过程就是Digest（翻译中文为’消化‘，顾名思义，消化掉新的改变）。该过程由scope对象的\$digest方法完成，通常不需要自己调用，Angular在每一轮JS执行后会自动调用每个scope的\$digest方法，这类场景包括响应Angular内置的directive事件（如ng-click，ng-change等），controller的初始化，或者使用Angular内置的service的回调函数（如\$timeout，\$http等）。这些工作保证了每个scope的更改都能被及时发现。</p>
+<p>简单来说，\$digest所做的事情就是脏数据检查（dirty-checking），即检查所有监视的数据是否有改动。这就需要为每个变量设置一个监视器（watcher）。每个监视器由两部分组成，一是监视函数（watch function），用于获得当前变量的最新值；一是监听函数（listener function），由于在检测到数据改动时回调。dirty-checking认为数据发生改变的条件是当前数据与保存的历史数据不一致。Angular使用scope对象的\$watch方法为scope定义的变量添加watcher。注意，如果一个变量没有用于数据绑定（如使用ng-model），则Angular不会自动为其添加watcher。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define([&apos;angular&apos;], function(angular) &#123;  </span><br><span class="line">    angular.module(&apos;myApp&apos;, [])  </span><br><span class="line">      .controller(&apos;MyController&apos;, [&apos;$scope&apos;, function ($scope) &#123;                                     </span><br><span class="line">        $scope.name = &apos;Change the name&apos;;  </span><br><span class="line">      &#125;]);  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果\$scope.name在HTML的某个ng-controller下被绑定，那么Angular为其添加一个watcher，反之则不会，除非自己手动添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scope.$watch(  </span><br><span class="line">    function(scope) &#123;return scope.name;&#125;,                                                            </span><br><span class="line">    function(newValue, oldValue) &#123; &#125;  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>上述代码为name定义了一个监听器，指定两个函数为参数。watch函数用于获取需要监视的变量的当前值；listener函数以name的新旧值为参数，作为回调。其实，通常我们习惯将watch函数简写成变量的名字，Angular会在内部将其转换为watch函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scope.$watch(  </span><br><span class="line">    &apos;name&apos;,  </span><br><span class="line">    function(newValue, oldValue) &#123; scope.name = &apos;Cat&apos;;&#125;                                               </span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>\$watch函数的实现逻辑很简单，根据参数定义一个watcher对象，将watcher对象加入内部维护的watcher列表（\$\$watchers）中，最后返回一个闭包用于销毁当前watcher。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">scope.prototype.$watch = function(watchFn, listenerFn, valueEq)&#123;  </span><br><span class="line">    var self = this;  </span><br><span class="line">    var watcher = &#123;  </span><br><span class="line">        watchFn: watchFn,  </span><br><span class="line">        listenerFn: listenerFn,  </span><br><span class="line">        valueEq : valueEq,  </span><br><span class="line">          last : null  </span><br><span class="line">        &#125;;  </span><br><span class="line">    this.$$watchers.push(watcher);  </span><br><span class="line">    return function()&#123;//remove current watcher from watcher list.                                 </span><br><span class="line">    &#125;;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注意，\$watch函数还有第三个常用参数valueEq，用于指定在比较新值与旧值时，是否按照对象值来比较，默认是按照引用来比较。比如，watcher监视的对象是一个数组，默认情况下，该watcher不会逐一检查数组每个元素是否变化，而只是检查该数组的引用是否变化。\$watch的返回值可以在适当的情况下调用以注销某个watcher。last用于记录上一次监视时该变量的值。</p>
+<p>\$digest过程的逻辑就是检查watcher列表中的每一项，看当前值与上次的值是否相同，如果不同则调用listener回调函数。这就是dirty-checking的核心逻辑，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var self = this;  </span><br><span class="line">var newValue, oldValue, dirty;  </span><br><span class="line">this.$$watchers.forEach(function(watcher)&#123;  </span><br><span class="line">      </span><br><span class="line">    newValue = watcher.watchFn(self);  </span><br><span class="line">    oldValue = watcher.last;  </span><br><span class="line">    if(!self.isEqual(newValue, oldValue, watcher.valueEq))&#123;                                       </span><br><span class="line">        self.$$lastDirtyWatch = watcher;  </span><br><span class="line">        watcher.last = newValue;  </span><br><span class="line">        watcher.listenerFn(newValue, oldValue);  </span><br><span class="line">        dirty = true;  </span><br><span class="line">    &#125;else&#123;  </span><br><span class="line">        return false;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;);  </span><br><span class="line">return dirty;</span><br></pre></td></tr></table></figure>
+<p>这里使用isEqual工具函数检查newValue和oldValue是否相等，如果valueEq为true，则要按值进行比较。dirty作为dirty-checking的返回值，表示变量是否有变化。</p>
+<p>然而，有时只对watcher列表检查一遍是不够的，因为开发者可能在某个watcher的listener函数中修改了scope的某个变量(如前面的例子），这个改变在第一轮检查时无法发现。因此，Angular在每次调用\$digest时，对watcher列表进行了多次检查，直到没有变量变化为止，如果总是有变量发生变化，Angular限制检查watcher列表的最多次数为10，这个值是默认值。如果超过10次，\$digest会抛出异常’Maximum iteration limit exceeded.‘。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var times = 10;//default of Angular  </span><br><span class="line">var dirty;  </span><br><span class="line">beginPhase(&quot;$digest&quot;);  </span><br><span class="line">  </span><br><span class="line">do &#123;  </span><br><span class="line">    dirty = this._digest();  </span><br><span class="line">    if(dirty &amp;&amp; !(times--))&#123;  </span><br><span class="line">        this.$clearPhase();  </span><br><span class="line">        throw &quot;Maximum iteration limit exceeded.&quot;;                                               </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;while(dirty);  </span><br><span class="line">clearPhase();</span><br></pre></td></tr></table></figure>
+<p>上述代码将dirty-checking的具体逻辑封装到_digest方法中，在外层通过while循环限制dirty-checking的次数。这里面的beginPhase和clearPhase方法用于记录当前的digest阶段，后面有解释。在实际的Angular实现中，对上述过程有进一步的优化。考虑这个场景，加入watcher列表很长，而只有其中少量变量发生改变，Angular能够将检查watcher的次数平均减少一半，详细实现可以参考Angular源代码。</p>
+<h2 id="2-Digest-的应用场景"><a href="#2-Digest-的应用场景" class="headerlink" title="2.Digest 的应用场景"></a>2.Digest 的应用场景</h2><p>在使用AngularJS开发过程中，我们很少自己调用\$digest方法，因为在多数情况下Angular知晓当前scope的变量可能发生变化，如上面小节提到的场景。然后，依然有些情况下Angular对scope对象的改变懵然不知。例如，在新一轮代码中执行某些函数而没有通过Angular提供的接口，setTimeout或者Ajax的回调函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;  </span><br><span class="line">    scope.name = &apos;Circle&apos;;                                                                          </span><br><span class="line">&#125;, 50);</span><br></pre></td></tr></table></figure>
+<p>此时，Angular对name的改变不知情，因为setTimeout的参数函数延迟到另一轮执行，过后没有调用\$digest方法，直到其他事件发生时触发Digest，Angular才能知晓。对于这种情况我们需要手动触发\$digest。通常，我们不直接调用\$digest方法，而是使用\$apply方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;  </span><br><span class="line">    $scope.$apply(function()&#123;  </span><br><span class="line">        scope.name = &apos;Circle&apos;;                                                                       </span><br><span class="line">    &#125;);   </span><br><span class="line">&#125;, 50);</span><br></pre></td></tr></table></figure>
+<p>\$apply方法的实现很简单，首先调用指定的函数，然后调用\$digest方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">scope.prototype.$apply = function(fn)&#123;  </span><br><span class="line">    try&#123;  </span><br><span class="line">        beginPhase(&quot;$apply&quot;);  </span><br><span class="line">        return fn();  </span><br><span class="line">    &#125; finally&#123;  </span><br><span class="line">        clearPhase();  </span><br><span class="line">        this.$digest();//always execute.                                                             </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>值得注意的是，这里的逻辑放到了try/finally代码块中，除了异常处理外，还保证\$digest方法总能被执行，即使在执行fn时发生了异常。（Angular实现中，通过scope.\$eval方法执行fn函数，因为传入的fn也有可能是个表达式，详细请参考AngularJS 源代码）。对于上面代码的场景，也可以使用Angular提供的\$timeout service，因为该service在实现时内部调用了\$apply方法。使用\$apply方法时还要注意一点，Angular一次只允许一个digest过程执行，因此它在调用\$digest方法时会判断当前的阶段，如果正在digest，则会抛出异常。这段逻辑由前面提到的beginPhase/clearPhase实现，\$apply方法也有自己的阶段，称为‘\$appy’。综上，在调用\$apply时，一定要理清当前上下文是否可能正在digest。例如，在一个watcher的listener函数中就不能再调用\$apply方法。</p>
+<p>\$apply方法的特点是，传入的函数会立即执行。scope中还实现了几个与digest相关的方法，如\$evalAsync，\$applyAsync等。这些方法适用于不同的场景，下面一一阐述。</p>
+<p>\$evalAsync ： 该方法适用于这样的场景，scope中的改动不被Angular知晓（如在某个回调函数中），但希望该改动被Angular消化掉，且不能调用\$apply方法（因为有可能已经有一个digest cycle正在进行）。该方法将需要执行的函数延迟到当前digest过程的下一次循环迭代再执行。看代码可能会好理解一些：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scope.prototype.$evalAsync = function(fn)&#123;  </span><br><span class="line">    //store the scope is used for scope inheritance.  </span><br><span class="line">    this.$$asyncQueue.push(&#123;scope: this, fn: fn&#125;);                                                    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里有一个\$\$asyncQueue队列用于维护所有延迟的函数，每次调用\$evalAsync时，函数会立即放入队列，方法返回。在当前digest cycle执行下一次dirty-checking时，从队列中取出每个函数并执行，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">do &#123;  </span><br><span class="line">    while(this.$$asyncQueue.length)&#123;  </span><br><span class="line">        try&#123;  </span><br><span class="line">            var asyncTask = this.$$asyncQueue.shift();                                              </span><br><span class="line">            asyncTask.scope.$eval(asyncTask.fn);  </span><br><span class="line">        &#125;catch(e)&#123;  </span><br><span class="line">            console.error(e);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    //wait for all watchers stable, no value changes.  </span><br><span class="line">    dirty = this.$$digestOnce();//...  </span><br><span class="line">&#125;while(dirty || this.$$asyncQueue.length);</span><br></pre></td></tr></table></figure>
+<p>当没有脏数据并且没有延迟的函数时，才退出循环，可以对照前面\$digest方法实现。<br>如果在调用\$evalAsync时没有正在进行的digest，则\$evalAsync会调用\$digest启动这样一个过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">scope.prototype.$evalAsync = function(expr)&#123;  </span><br><span class="line">    //store the scope is used for scope inheritance.                                               </span><br><span class="line">    var self  = this;  </span><br><span class="line">    if(!self.</span><br><span class="line">phase &amp;&amp; !self.</span><br><span class="line">asyncQueue.length)&#123;  </span><br><span class="line">        setTimeout(function()&#123;  </span><br><span class="line">            self.$digest();  </span><br><span class="line">        &#125;, 0);  </span><br><span class="line">    &#125;  </span><br><span class="line">    this.$$asyncQueue.push(&#123;scope: this, fn: fn&#125;);  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以看出，在将fn放入队列前，该方法首先检查当前的阶段是否有值（如‘\$digest’，‘\$apply’等），如果没有就调度一个\$digest方法执行。</p>
+<p>\$applyAsync：该方法适用于在Angular知晓的范围外，频繁地执行某些回调函数(如某个service），并且需要Angular消化掉这些函数对scope的改动。例如，使用第三方的http服务，在响应时回调函数根据获取的数据改变了scope的某个变量，这个改动Angular不知晓。如果频繁调用\$apply会有性能问题，这时就会用到\$applyAsync方法。与\$evalAsync方法不同的是，\$applyAsync方法会将digest过程也延迟，即使当前有正在进行的digest过程，指定的函数也会在下一个digest cycle执行。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">scope.prototype.$applyAsync = function(fn)&#123;  </span><br><span class="line">    var self = this;  </span><br><span class="line">    self.$$applyAsyncQueue.push(function()&#123;  </span><br><span class="line">        self.$eval(fn);  </span><br><span class="line">    &#125;);  </span><br><span class="line">    setTimeout(function()&#123;  </span><br><span class="line">        while(this.$$applyAsyncQueue.length)&#123;  </span><br><span class="line">              try&#123;  </span><br><span class="line">                 this.$$applyAsyncQueue.shift()();                                                  </span><br><span class="line">              &#125;catch(e)&#123;  </span><br><span class="line">                   console.error(e);  </span><br><span class="line">              &#125;  </span><br><span class="line">   &#125;&#125;, 0);//execute in the next round.  </span><br><span class="line">      </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>首先将fn放入内部维护的队列<br>applyAsyncQueue中。然后在下一轮代码执行时（setTimeout超时），调用\$apply方法执行队列中的每个fn。这里有个问题，每个fn的执行都会重新启动一个\$digest过程，如果fn很多，可能有性能问题。Angular的优化方法是，通过setTimeout放回的id来判断是否已经调度过执行<br>applyAsyncQueue中所有方法，如果是就不再调用setTimeout，这样相当于多个fn共用一个\$apply方法。这种优化在前面提到的http响应处理的情景下，就显得尤为重要了。如果在这种情况下使用\$evalAsync，就会导致每个fn启动一个新的digest cycle，因为fn在回调函数中，每个fn无法在同一个digest中消化掉。</p>
+<p>原文引用：<a href="https://blog.csdn.net/jaytalent/article/details/51112377" target="_blank" rel="noopener">https://blog.csdn.net/jaytalent/article/details/51112377</a></p>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/08/17/angularjsDigest/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/08/17/angularjsDigest/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
+            </ul>
+            
+            	<span id="busuanzi_container_site_pv">2018总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
+<script type="text/javascript" src="/js/love.js"></script>
